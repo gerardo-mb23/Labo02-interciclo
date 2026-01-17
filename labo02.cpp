@@ -38,33 +38,66 @@ private:
 
     Nodo *head;
 
+    float sumaNotasRecursiva(Nodo *nodo)
+    {
+        if (nodo == nullptr)
+            return 0;
+        return nodo->estudiante->notaFinal +
+               sumaNotasRecursiva(nodo->siguiente);
+    }
+
+    int contarEstudiantesRecursivo(Nodo *nodo)
+    {
+        if (nodo == nullptr)
+            return 0;
+        return 1 + contarEstudiantesRecursivo(nodo->siguiente);
+    }
+
 public:
     ListaEnlazada()
     {
         head = nullptr;
     }
 
-void agregarEstudiante(string nombre, float nota) {
-        Estudiante* nuevo = new Estudiante(nombre, nota);
-        Nodo* nuevoNodo = new Nodo(nuevo);
+    void agregarEstudiante(string nombre, float nota)
+    {
+        Estudiante *nuevo = new Estudiante(nombre, nota);
+        Nodo *nuevoNodo = new Nodo(nuevo);
 
-        if (head == nullptr) {
+        if (head == nullptr)
+        {
             head = nuevoNodo;
-        } else {
-            Nodo* temp = head;
-            while (temp->siguiente != nullptr) {
+        }
+        else
+        {
+            Nodo *temp = head;
+            while (temp->siguiente != nullptr)
+            {
                 temp = temp->siguiente;
             }
             temp->siguiente = nuevoNodo;
         }
     }
-    
-void imprimirLista() {
-        Nodo* temp = head;
-        while (temp != nullptr) {
+
+    void imprimirLista()
+    {
+        Nodo *temp = head;
+        while (temp != nullptr)
+        {
             temp->estudiante->imprimir();
             temp = temp->siguiente;
         }
+    }
+
+    float calcularPromedioRecursivo()
+    {
+        if (head == nullptr)
+            return 0;
+
+        float suma = sumaNotasRecursiva(head);
+        int total = contarEstudiantesRecursivo(head);
+
+        return suma / total;
     }
 };
 
