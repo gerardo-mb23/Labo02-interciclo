@@ -43,6 +43,21 @@ public:
     {
         head = nullptr;
     }
+
+void agregarEstudiante(string nombre, float nota) {
+        Estudiante* nuevo = new Estudiante(nombre, nota);
+        Nodo* nuevoNodo = new Nodo(nuevo);
+
+        if (head == nullptr) {
+            head = nuevoNodo;
+        } else {
+            Nodo* temp = head;
+            while (temp->siguiente != nullptr) {
+                temp = temp->siguiente;
+            }
+            temp->siguiente = nuevoNodo;
+        }
+    }
 };
 
 int main()
