@@ -58,6 +58,14 @@ void agregarEstudiante(string nombre, float nota) {
             temp->siguiente = nuevoNodo;
         }
     }
+    
+void imprimirLista() {
+        Nodo* temp = head;
+        while (temp != nullptr) {
+            temp->estudiante->imprimir();
+            temp = temp->siguiente;
+        }
+    }
 };
 
 int main()
