@@ -104,5 +104,15 @@ public:
 int main()
 {
 
+ListaEnlazada lista;
+
+    lista.agregarEstudiante("Juan", 8.5);
+    lista.agregarEstudiante("Maria", 9.0);
+    lista.agregarEstudiante("Carlos", 7.2);
+    lista.agregarEstudiante("Ana", 10.0);
+
+    lista.imprimirLista();
+    cout << "Promedio: " << lista.calcularPromedioRecursivo() << endl;
+    
     return 0;
 }
